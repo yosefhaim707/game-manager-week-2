@@ -1,20 +1,22 @@
-# Game Tournament Manager One-Day Training Project
+# פרויקט תרגול יומי: מנהל טורניר משחקים
 
-## Project Summary
+<a id="project-summary"></a>
 
-`game-tournament-manager-one-day-training` is a Node.js training project that demonstrates a simple game tournament management system.
+## תקציר הפרויקט
 
-The project focuses on managing:
+`game-tournament-manager-one-day-training` הוא פרויקט תרגול ב-Node.js שמדגים מערכת פשוטה לניהול טורניר משחקים.
 
-- Players
-- Teams
-- Matches
-- Match results
-- Player scores
-- Team rankings
-- Match history
-- Game mode rules
-- Tournament statistics
+הפרויקט מתמקד בניהול:
+
+- שחקנים
+- קבוצות
+- משחקים
+- תוצאות משחקים
+- ניקוד שחקנים
+- דירוג קבוצות
+- היסטוריית משחקים
+- חוקי מצבי משחק
+- סטטיסטיקות טורניר
 - ES Modules
 - CommonJS modules
 - Factory functions
@@ -22,95 +24,101 @@ The project focuses on managing:
 - Closures
 - Array methods
 - Object methods
-- Validation logic
+- לוגיקת ולידציה
 
-The main goal of the project is not to build a real esports platform, but to practice important JavaScript and Node.js concepts through a fun and realistic example.
+המטרה המרכזית של הפרויקט היא לא לבנות פלטפורמת esports אמיתית, אלא לתרגל מושגים חשובים ב-JavaScript וב-Node.js דרך דוגמה מהנה וריאליסטית.
 
-The system runs from the terminal, creates sample players and teams, schedules matches, records results, updates rankings, calculates statistics, and prints the results to the console.
+המערכת רצה מהטרמינל, יוצרת שחקנים וקבוצות לדוגמה, מתזמנת משחקים, מתעדת תוצאות, מעדכנת דירוגים, מחשבת סטטיסטיקות ומדפיסה את התוצאות לקונסול.
 
-This project is designed to take **one full study day**.
+הפרויקט מיועד לביצוע במהלך **יום לימוד מלא אחד**.
 
-It is a little simpler than the bank project because it does not include money transfers, overdraft rules, account closing, or complex transaction validation. Instead, it focuses on a cleaner tournament flow that is easier to complete in one day.
-
----
-
-## Table of Contents
-
-1. [Main Goal](#main-goal)
-2. [What the Project Demonstrates](#what-the-project-demonstrates)
-3. [Technologies Used](#technologies-used)
-4. [Expected Duration](#expected-duration)
-5. [Project Structure](#project-structure)
-6. [How to Run the Project](#how-to-run-the-project)
-7. [Application Flow](#application-flow)
-8. [Core Data Models](#core-data-models)
-9. [TournamentManager Class](#tournamentmanager-class)
-10. [Game Modes and Rules](#game-modes-and-rules)
-11. [Match Results](#match-results)
-12. [Statistics System](#statistics-system)
-13. [Printing Utilities](#printing-utilities)
-14. [CommonJS Example](#commonjs-example)
-15. [JavaScript Concepts Practiced](#javascript-concepts-practiced)
-16. [Validation and Error Handling](#validation-and-error-handling)
-17. [Example Scenario](#example-scenario)
-18. [Current Limitations](#current-limitations)
-19. [Possible Future Improvements](#possible-future-improvements)
-20. [Final Notes](#final-notes)
+הוא מעט פשוט יותר מפרויקט הבנק, מכיוון שהוא לא כולל העברות כספים, חוקי מינוס, סגירת חשבונות או ולידציה מורכבת של פעולות. במקום זאת, הוא מתמקד בזרימת טורניר נקייה שקל יותר להשלים ביום אחד.
 
 ---
 
-## Main Goal
+## תוכן עניינים
 
-The goal of this project is to practice building a modular JavaScript application using Node.js.
-
-The project simulates a small game tournament system where the code can:
-
-- Create new players.
-- Create teams.
-- Add players to teams.
-- Generate unique IDs for players, teams, and matches.
-- Schedule matches between teams.
-- Record match results.
-- Prevent invalid results.
-- Track match history.
-- Search players by nickname.
-- Filter teams by status.
-- Calculate tournament statistics.
-- Print readable output to the terminal.
-
-This project is especially useful for learning how to organize code into modules and how to separate responsibilities between files.
-
----
-
-## What the Project Demonstrates
-
-The project demonstrates a complete flow of a small tournament system.
-
-It includes:
-
-- A main application file: `main.js`
-- A central management class: `TournamentManager`
-- Factory functions for creating clean data objects
-- Utility functions for printing
-- Utility functions for statistics
-- A closure-based ID generator
-- ES Module syntax using `import` and `export`
-- A separate CommonJS example using `require` and `module.exports`
-
-The project also shows how different files can work together:
-
-- `main.js` controls the demo scenario.
-- `TournamentManager.js` contains the main tournament logic.
-- Factory files create players, teams, and matches.
-- `stats.js` calculates useful tournament information.
-- `printUtils.js` prints readable output.
-- `commonjs` demonstrates CommonJS syntax separately.
+1. [המטרה המרכזית](#main-goal)
+2. [מה הפרויקט מדגים](#what-the-project-demonstrates)
+3. [טכנולוגיות בשימוש](#technologies-used)
+4. [משך זמן צפוי](#expected-duration)
+5. [מבנה הפרויקט](#project-structure)
+6. [איך להריץ את הפרויקט](#how-to-run-the-project)
+7. [זרימת האפליקציה](#application-flow)
+8. [מודלי הנתונים המרכזיים](#core-data-models)
+9. [מחלקת TournamentManager](#tournamentmanager-class)
+10. [מצבי משחק וחוקים](#game-modes-and-rules)
+11. [תוצאות משחקים](#match-results)
+12. [מערכת הסטטיסטיקות](#statistics-system)
+13. [כלי הדפסה](#printing-utilities)
+14. [דוגמת CommonJS](#commonjs-example)
+15. [מושגי JavaScript שמתורגלים](#javascript-concepts-practiced)
+16. [ולידציה וטיפול בשגיאות](#validation-and-error-handling)
+17. [תרחיש לדוגמה](#example-scenario)
+18. [מגבלות נוכחיות](#current-limitations)
+19. [שיפורים אפשריים בעתיד](#possible-future-improvements)
+20. [הערות סיום](#final-notes)
 
 ---
 
-## Technologies Used
+<a id="main-goal"></a>
 
-This project uses:
+## המטרה המרכזית
+
+המטרה של הפרויקט היא לתרגל בנייה של אפליקציית JavaScript מודולרית בעזרת Node.js.
+
+הפרויקט מדמה מערכת קטנה לניהול טורניר משחקים, שבה הקוד יכול:
+
+- ליצור שחקנים חדשים.
+- ליצור קבוצות.
+- להוסיף שחקנים לקבוצות.
+- ליצור מזהים ייחודיים לשחקנים, לקבוצות ולמשחקים.
+- לתזמן משחקים בין קבוצות.
+- לתעד תוצאות משחקים.
+- למנוע תוצאות לא תקינות.
+- לעקוב אחרי היסטוריית משחקים.
+- לחפש שחקנים לפי כינוי.
+- לסנן קבוצות לפי סטטוס.
+- לחשב סטטיסטיקות טורניר.
+- להדפיס פלט קריא לטרמינל.
+
+הפרויקט שימושי במיוחד ללמידה של ארגון קוד למודולים ושל הפרדת אחריות בין קבצים.
+
+---
+
+<a id="what-the-project-demonstrates"></a>
+
+## מה הפרויקט מדגים
+
+הפרויקט מדגים זרימה מלאה של מערכת טורניר קטנה.
+
+הוא כולל:
+
+- קובץ אפליקציה ראשי: `main.js`
+- מחלקת ניהול מרכזית: `TournamentManager`
+- Factory functions ליצירת אובייקטי נתונים נקיים
+- פונקציות עזר להדפסה
+- פונקציות עזר לסטטיסטיקות
+- מחולל מזהים שמבוסס על closure
+- תחביר ES Modules בעזרת `import` ו-`export`
+- דוגמת CommonJS נפרדת בעזרת `require` ו-`module.exports`
+
+הפרויקט גם מראה איך קבצים שונים יכולים לעבוד יחד:
+
+- `main.js` שולט בתרחיש הדמו.
+- `TournamentManager.js` מכיל את לוגיקת הטורניר המרכזית.
+- קובצי factory יוצרים שחקנים, קבוצות ומשחקים.
+- `stats.js` מחשב מידע שימושי על הטורניר.
+- `printUtils.js` מדפיס פלט קריא.
+- `commonjs` מדגים בנפרד תחביר CommonJS.
+
+---
+
+<a id="technologies-used"></a>
+
+## טכנולוגיות בשימוש
+
+הפרויקט משתמש ב:
 
 - Node.js
 - JavaScript
@@ -118,67 +126,71 @@ This project uses:
 - CommonJS
 - npm scripts
 
-There are no external npm dependencies in the suggested version of the project.
+בגרסה המוצעת של הפרויקט אין תלויות npm חיצוניות.
 
-The project is mainly based on built-in JavaScript and Node.js features.
+הפרויקט מבוסס בעיקר על יכולות מובנות של JavaScript ושל Node.js.
 
 ---
 
-## Expected Duration
+<a id="expected-duration"></a>
 
-This project is designed for **one day** of practice.
+## משך זמן צפוי
 
-Suggested timing:
+הפרויקט מיועד ל**יום אחד** של תרגול.
 
-| Part | Estimated Time |
+זמנים מומלצים:
+
+| חלק | זמן משוער |
 |---|---:|
-| Project setup and folder structure | 30 minutes |
-| Factories and ID generator | 60 minutes |
-| `TournamentManager` class | 2 hours |
-| Statistics and printing utilities | 90 minutes |
-| CommonJS example | 30 minutes |
-| Demo scenario and validation testing | 90 minutes |
-| Review and cleanup | 30 minutes |
+| הקמת הפרויקט ומבנה התיקיות | 30 דקות |
+| Factories ומחולל מזהים | 60 דקות |
+| מחלקת `TournamentManager` | שעתיים |
+| סטטיסטיקות וכלי הדפסה | 90 דקות |
+| דוגמת CommonJS | 30 דקות |
+| תרחיש דמו ובדיקת ולידציות | 90 דקות |
+| סקירה וניקוי | 30 דקות |
 
-Total estimated time: **7 hours**.
+זמן משוער כולל: **7 שעות**.
 
-The project can be completed faster if students already understand modules, classes, and array methods.
+אפשר להשלים את הפרויקט מהר יותר אם התלמידים כבר מבינים מודולים, מחלקות ומתודות של מערכים.
 
 ---
 
-## Project Structure
+<a id="project-structure"></a>
+
+## מבנה הפרויקט
 
 ```txt
 game-tournament-manager-one-day-training/
-│
-├── package.json
-├── main.js
-├── README.md
-│
-├── modules/
-│   ├── idGenerator.js
-│   ├── playerFactory.js
-│   ├── teamFactory.js
-│   ├── matchFactory.js
-│   ├── TournamentManager.js
-│   ├── stats.js
-│   └── printUtils.js
-│
-└── commonjs/
-    ├── package.json
-    ├── scoreUtils.js
-    └── testCommonJS.js
+|
++-- package.json
++-- main.js
++-- README.md
+|
++-- modules/
+|   +-- idGenerator.js
+|   +-- playerFactory.js
+|   +-- teamFactory.js
+|   +-- matchFactory.js
+|   +-- TournamentManager.js
+|   +-- stats.js
+|   +-- printUtils.js
+|
++-- commonjs/
+    +-- package.json
+    +-- scoreUtils.js
+    +-- testCommonJS.js
 ```
 
 ---
 
-## File-by-File Explanation
+## הסבר קובץ אחר קובץ
 
 ### `package.json`
 
-The root `package.json` defines the project as a Node.js package.
+קובץ ה-`package.json` הראשי מגדיר את הפרויקט כחבילת Node.js.
 
-Important settings:
+הגדרות חשובות:
 
 ```json
 {
@@ -190,35 +202,35 @@ Important settings:
 }
 ```
 
-The most important part is:
+החלק החשוב ביותר הוא:
 
 ```json
 "type": "module"
 ```
 
-This means the root project uses ES Modules.
+המשמעות היא שהפרויקט הראשי משתמש ב-ES Modules.
 
-Because of this, the main project files use:
+לכן קובצי הפרויקט הראשיים משתמשים ב:
 
 ```js
 import
 export
 ```
 
-instead of:
+במקום:
 
 ```js
 require
 module.exports
 ```
 
-The project can be started with:
+אפשר להפעיל את הפרויקט עם:
 
 ```bash
 npm start
 ```
 
-which runs:
+שמריץ:
 
 ```bash
 node main.js
@@ -228,15 +240,15 @@ node main.js
 
 ### `main.js`
 
-`main.js` is the entry point of the application.
+`main.js` הוא נקודת הכניסה של האפליקציה.
 
-It imports:
+הוא מייבא:
 
 - `createIdGenerator`
 - `TournamentManager`
-- Printing functions from `printUtils.js`
+- פונקציות הדפסה מתוך `printUtils.js`
 
-It creates three ID generators:
+הוא יוצר שלושה מחוללי מזהים:
 
 ```js
 const generatePlayerId = createIdGenerator("PLY");
@@ -244,7 +256,7 @@ const generateTeamId = createIdGenerator("TEAM");
 const generateMatchId = createIdGenerator("MATCH");
 ```
 
-These generators create IDs like:
+המחוללים האלה יוצרים מזהים כמו:
 
 ```txt
 PLY-1
@@ -255,7 +267,7 @@ MATCH-1
 MATCH-2
 ```
 
-Then it creates a new tournament manager:
+לאחר מכן הוא יוצר מנהל טורניר חדש:
 
 ```js
 const tournament = new TournamentManager({
@@ -265,38 +277,38 @@ const tournament = new TournamentManager({
 });
 ```
 
-After that, `main.js` runs a full tournament scenario:
+אחרי זה, `main.js` מריץ תרחיש טורניר מלא:
 
-1. Create players.
-2. Create teams.
-3. Add players to teams.
-4. Print all teams.
-5. Schedule matches.
-6. Record match results.
-7. Try to record an invalid result.
-8. Search players by nickname.
-9. Print match history.
-10. Print leaderboard.
-11. Print tournament statistics.
-12. Print final tournament state.
+1. יצירת שחקנים.
+2. יצירת קבוצות.
+3. הוספת שחקנים לקבוצות.
+4. הדפסת כל הקבוצות.
+5. תזמון משחקים.
+6. תיעוד תוצאות משחקים.
+7. ניסיון לתעד תוצאה לא תקינה.
+8. חיפוש שחקנים לפי כינוי.
+9. הדפסת היסטוריית משחקים.
+10. הדפסת טבלת דירוג.
+11. הדפסת סטטיסטיקות טורניר.
+12. הדפסת מצב הטורניר הסופי.
 
-This file is not interactive. It does not ask the user for input. Instead, it runs a predefined scenario to demonstrate how the system works.
+הקובץ הזה אינו אינטראקטיבי. הוא לא מבקש קלט מהמשתמש. במקום זאת, הוא מריץ תרחיש מוגדר מראש כדי להדגים איך המערכת עובדת.
 
 ---
 
 ### `modules/idGenerator.js`
 
-This file exports the function:
+הקובץ הזה מייצא את הפונקציה:
 
 ```js
 createIdGenerator(prefix = "ID")
 ```
 
-The function uses a closure.
+הפונקציה משתמשת ב-closure.
 
-A closure means that an inner function remembers variables from the outer function, even after the outer function has finished running.
+closure אומר שפונקציה פנימית זוכרת משתנים מהפונקציה החיצונית, גם אחרי שהפונקציה החיצונית סיימה לרוץ.
 
-The file contains logic similar to:
+הקובץ מכיל לוגיקה דומה ל:
 
 ```js
 export function createIdGenerator(prefix = "ID") {
@@ -309,7 +321,7 @@ export function createIdGenerator(prefix = "ID") {
 }
 ```
 
-Example:
+דוגמה:
 
 ```js
 const generatePlayerId = createIdGenerator("PLY");
@@ -319,25 +331,25 @@ generatePlayerId(); // PLY-2
 generatePlayerId(); // PLY-3
 ```
 
-Each generator has its own private `currentId`.
+לכל מחולל יש `currentId` פרטי משלו.
 
-That means the player generator, team generator, and match generator do not interfere with each other.
+כלומר מחולל השחקנים, מחולל הקבוצות ומחולל המשחקים לא משפיעים זה על זה.
 
-This is one of the most important learning points in the project.
+זו אחת מנקודות הלמידה החשובות ביותר בפרויקט.
 
 ---
 
 ### `modules/playerFactory.js`
 
-This file exports:
+הקובץ הזה מייצא:
 
 ```js
 createPlayer({ id, nickname, mainRole })
 ```
 
-It creates a player object.
+הוא יוצר אובייקט שחקן.
 
-The player structure is:
+מבנה השחקן הוא:
 
 ```js
 {
@@ -353,41 +365,41 @@ The player structure is:
 }
 ```
 
-The player nickname is cleaned with:
+כינוי השחקן מנוקה בעזרת:
 
 ```js
 nickname.trim()
 ```
 
-That means if the input is:
+כלומר אם הקלט הוא:
 
 ```js
 "  ShadowFox  "
 ```
 
-the stored nickname becomes:
+הכינוי שנשמר יהיה:
 
 ```txt
 ShadowFox
 ```
 
-This file demonstrates a factory function.
+הקובץ הזה מדגים factory function.
 
-A factory function is a function that creates and returns an object.
+factory function היא פונקציה שיוצרת ומחזירה אובייקט.
 
 ---
 
 ### `modules/teamFactory.js`
 
-This file exports:
+הקובץ הזה מייצא:
 
 ```js
 createTeam({ id, name, gameMode })
 ```
 
-It creates a team object.
+הוא יוצר אובייקט קבוצה.
 
-The team structure is:
+מבנה הקבוצה הוא:
 
 ```js
 {
@@ -402,24 +414,24 @@ The team structure is:
 }
 ```
 
-Each team stores its own players in the `players` array.
+כל קבוצה שומרת את השחקנים שלה בתוך מערך `players`.
 
-This means the project has a simple hierarchy:
+כלומר לפרויקט יש היררכיה פשוטה:
 
 ```txt
 TournamentManager
-└── teams
-    └── team
-        └── players
++-- teams
+    +-- team
+        +-- players
 ```
 
-This is simpler than the bank project because there is no account transaction system inside every object.
+זה פשוט יותר מפרויקט הבנק, מכיוון שאין מערכת עסקאות חשבון בתוך כל אובייקט.
 
 ---
 
 ### `modules/matchFactory.js`
 
-This file exports:
+הקובץ הזה מייצא:
 
 ```js
 createMatch({
@@ -430,9 +442,9 @@ createMatch({
 })
 ```
 
-It creates a match object.
+הוא יוצר אובייקט משחק.
 
-The match structure is:
+מבנה המשחק הוא:
 
 ```js
 {
@@ -449,35 +461,35 @@ The match structure is:
 }
 ```
 
-The match starts with:
+המשחק מתחיל עם:
 
 ```txt
 Scheduled
 ```
 
-After the result is recorded, the status becomes:
+לאחר שתוצאה מתועדת, הסטטוס הופך ל:
 
 ```txt
 Completed
 ```
 
-This gives students practice with object state changes.
+כך התלמידים מתרגלים שינוי מצב של אובייקטים.
 
 ---
 
 ### `modules/TournamentManager.js`
 
-This is the main file of the system.
+זה הקובץ המרכזי של המערכת.
 
-It exports the class:
+הוא מייצא את המחלקה:
 
 ```js
 TournamentManager
 ```
 
-The `TournamentManager` class manages the whole tournament state.
+מחלקת `TournamentManager` מנהלת את כל מצב הטורניר.
 
-It stores:
+היא שומרת:
 
 ```js
 this.players = [];
@@ -485,16 +497,16 @@ this.teams = [];
 this.matches = [];
 ```
 
-The data hierarchy looks like this:
+היררכיית הנתונים נראית כך:
 
 ```txt
 TournamentManager
-├── players
-├── teams
-└── matches
++-- players
++-- teams
++-- matches
 ```
 
-The `TournamentManager` class receives the ID generators from `main.js`:
+מחלקת `TournamentManager` מקבלת את מחוללי המזהים מ-`main.js`:
 
 ```js
 constructor({
@@ -504,21 +516,23 @@ constructor({
 })
 ```
 
-This is good design because `TournamentManager` does not need to know how IDs are generated. It only uses the generator functions it receives.
+זה עיצוב טוב, כי `TournamentManager` לא צריך לדעת איך מזהים נוצרים. הוא רק משתמש בפונקציות המחוללות שהוא מקבל.
 
 ---
 
-## TournamentManager Class
+<a id="tournamentmanager-class"></a>
 
-`TournamentManager` is the heart of the project.
+## מחלקת TournamentManager
 
-It manages all players, teams, matches, results, rankings, and validation rules.
+`TournamentManager` היא הלב של הפרויקט.
+
+היא מנהלת את כל השחקנים, הקבוצות, המשחקים, התוצאות, הדירוגים וחוקי הוולידציה.
 
 ---
 
 ### Constructor
 
-The constructor receives three generator functions:
+ה-constructor מקבל שלוש פונקציות מחוללות:
 
 ```js
 constructor({
@@ -528,7 +542,7 @@ constructor({
 })
 ```
 
-Inside the constructor, the class creates:
+בתוך ה-constructor, המחלקה יוצרת:
 
 ```js
 this.players = [];
@@ -536,7 +550,7 @@ this.teams = [];
 this.matches = [];
 ```
 
-and saves the generator functions:
+ושומרת את הפונקציות המחוללות:
 
 ```js
 this.generatePlayerId = generatePlayerId;
@@ -544,17 +558,17 @@ this.generateTeamId = generateTeamId;
 this.generateMatchId = generateMatchId;
 ```
 
-It also defines the game mode rules.
+היא גם מגדירה את חוקי מצבי המשחק.
 
 ---
 
-### Main Methods
+### מתודות מרכזיות
 
 #### `isValidGameMode(gameMode)`
 
-Checks if the game mode exists in the tournament rules.
+בודקת אם מצב המשחק קיים בחוקי הטורניר.
 
-Example valid game modes:
+דוגמאות למצבי משחק תקינים:
 
 ```txt
 Solo
@@ -566,14 +580,14 @@ Squad
 
 #### `isValidScore(score)`
 
-Checks that a score is:
+בודקת שהניקוד הוא:
 
-- A number
-- Not `NaN`
-- Greater than or equal to `0`
-- A whole number
+- מספר
+- לא `NaN`
+- גדול או שווה ל-`0`
+- מספר שלם
 
-The logic is:
+הלוגיקה היא:
 
 ```js
 Number.isInteger(score) && score >= 0
@@ -583,23 +597,23 @@ Number.isInteger(score) && score >= 0
 
 #### `createPlayer(nickname, mainRole)`
 
-Creates a new player.
+יוצרת שחקן חדש.
 
-It validates:
+היא בודקת:
 
-- The nickname is not empty.
-- The main role is not empty.
-- The nickname is not already used.
+- הכינוי לא ריק.
+- התפקיד המרכזי לא ריק.
+- הכינוי עדיין לא נמצא בשימוש.
 
-If validation fails, the function returns:
+אם הוולידציה נכשלת, הפונקציה מחזירה:
 
 ```js
 null
 ```
 
-If creation succeeds, it returns the new player object.
+אם היצירה מצליחה, היא מחזירה את אובייקט השחקן החדש.
 
-Example:
+דוגמה:
 
 ```js
 const player1 = tournament.createPlayer("ShadowFox", "Attacker");
@@ -609,23 +623,23 @@ const player1 = tournament.createPlayer("ShadowFox", "Attacker");
 
 #### `createTeam(name, gameMode)`
 
-Creates a new team.
+יוצרת קבוצה חדשה.
 
-It validates:
+היא בודקת:
 
-- The team name is not empty.
-- The game mode is valid.
-- The team name is not already used.
+- שם הקבוצה לא ריק.
+- מצב המשחק תקין.
+- שם הקבוצה עדיין לא נמצא בשימוש.
 
-If validation fails, the function returns:
+אם הוולידציה נכשלת, הפונקציה מחזירה:
 
 ```js
 null
 ```
 
-If creation succeeds, it returns the new team object.
+אם היצירה מצליחה, היא מחזירה את אובייקט הקבוצה החדש.
 
-Example:
+דוגמה:
 
 ```js
 const team1 = tournament.createTeam("Pixel Warriors", "Squad");
@@ -635,20 +649,20 @@ const team1 = tournament.createTeam("Pixel Warriors", "Squad");
 
 #### `addPlayerToTeam(playerId, teamId)`
 
-Adds a player to a team.
+מוסיפה שחקן לקבוצה.
 
-Validation:
+ולידציה:
 
-- Player must exist.
-- Team must exist.
-- Player must be active.
-- Team must be active.
-- Player cannot already belong to another team.
-- Team must not be full.
+- השחקן חייב להתקיים.
+- הקבוצה חייבת להתקיים.
+- השחקן חייב להיות פעיל.
+- הקבוצה חייבת להיות פעילה.
+- השחקן לא יכול כבר להשתייך לקבוצה אחרת.
+- הקבוצה לא יכולה להיות מלאה.
 
-The team size is controlled by the game mode rules.
+גודל הקבוצה נשלט על ידי חוקי מצב המשחק.
 
-Example:
+דוגמה:
 
 ```js
 tournament.addPlayerToTeam(player1.id, team1.id);
@@ -658,24 +672,24 @@ tournament.addPlayerToTeam(player1.id, team1.id);
 
 #### `scheduleMatch(homeTeamId, awayTeamId)`
 
-Schedules a new match between two teams.
+מתזמנת משחק חדש בין שתי קבוצות.
 
-Validation:
+ולידציה:
 
-- Home team must exist.
-- Away team must exist.
-- Teams cannot be the same team.
-- Both teams must be active.
-- Both teams must use the same game mode.
-- Both teams must have enough players for that game mode.
+- קבוצת הבית חייבת להתקיים.
+- קבוצת החוץ חייבת להתקיים.
+- הקבוצות לא יכולות להיות אותה קבוצה.
+- שתי הקבוצות חייבות להיות פעילות.
+- שתי הקבוצות חייבות להשתמש באותו מצב משחק.
+- לשתי הקבוצות חייבים להיות מספיק שחקנים עבור מצב המשחק הזה.
 
-If scheduling succeeds, a new match is created with status:
+אם התזמון מצליח, נוצר משחק חדש עם סטטוס:
 
 ```txt
 Scheduled
 ```
 
-Example:
+דוגמה:
 
 ```js
 const match1 = tournament.scheduleMatch(team1.id, team2.id);
@@ -685,28 +699,28 @@ const match1 = tournament.scheduleMatch(team1.id, team2.id);
 
 #### `recordMatchResult(matchId, homeScore, awayScore)`
 
-Records the result of a scheduled match.
+מתעדת תוצאה של משחק מתוזמן.
 
-Validation:
+ולידציה:
 
-- Match must exist.
-- Match must still be scheduled.
-- Both scores must be valid.
-- Scores cannot be equal.
+- המשחק חייב להתקיים.
+- המשחק עדיין חייב להיות מתוזמן.
+- שני הניקודים חייבים להיות תקינים.
+- הניקודים לא יכולים להיות שווים.
 
-This project does not allow draws because it keeps the ranking logic simpler for one day.
+הפרויקט לא מאפשר תיקו, כי כך לוגיקת הדירוג נשארת פשוטה יותר לפרויקט של יום אחד.
 
-If the result succeeds:
+אם התוצאה נרשמת בהצלחה:
 
-- The match status becomes `Completed`.
-- The scores are saved.
-- The winner team gets one win.
-- The loser team gets one loss.
-- The winner team gets 3 points.
-- Every player on both teams gets `matchesPlayed + 1`.
-- Every player on the winning team gets bonus points.
+- סטטוס המשחק הופך ל-`Completed`.
+- הניקודים נשמרים.
+- הקבוצה המנצחת מקבלת ניצחון אחד.
+- הקבוצה המפסידה מקבלת הפסד אחד.
+- הקבוצה המנצחת מקבלת 3 נקודות.
+- כל שחקן בשתי הקבוצות מקבל `matchesPlayed + 1`.
+- כל שחקן בקבוצה המנצחת מקבל נקודות בונוס.
 
-Example:
+דוגמה:
 
 ```js
 tournament.recordMatchResult(match1.id, 12, 8);
@@ -716,22 +730,22 @@ tournament.recordMatchResult(match1.id, 12, 8);
 
 #### `findPlayerByNickname(searchText)`
 
-Finds players by nickname.
+מוצאת שחקנים לפי כינוי.
 
-The search:
+החיפוש:
 
-- Trims the search text.
-- Converts it to lowercase.
-- Compares it with lowercase player nicknames.
-- Uses `includes`.
+- מנקה רווחים מהטקסט.
+- ממיר אותו לאותיות קטנות.
+- משווה אותו לכינויי השחקנים באותיות קטנות.
+- משתמש ב-`includes`.
 
-This allows a search like:
+כך חיפוש כמו:
 
 ```js
 tournament.findPlayerByNickname("shadow")
 ```
 
-to find:
+ימצא:
 
 ```txt
 ShadowFox
@@ -741,9 +755,9 @@ ShadowFox
 
 #### `findTeamById(teamId)`
 
-Finds a team by ID.
+מוצאת קבוצה לפי ID.
 
-Uses:
+משתמשת ב:
 
 ```js
 Array.find()
@@ -753,9 +767,9 @@ Array.find()
 
 #### `findPlayerById(playerId)`
 
-Finds a player by ID.
+מוצאת שחקן לפי ID.
 
-Uses:
+משתמשת ב:
 
 ```js
 Array.find()
@@ -765,7 +779,7 @@ Array.find()
 
 #### `getActiveTeams()`
 
-Returns all teams where:
+מחזירה את כל הקבוצות שבהן:
 
 ```js
 team.isActive === true
@@ -775,7 +789,7 @@ team.isActive === true
 
 #### `getCompletedMatches()`
 
-Returns all matches where:
+מחזירה את כל המשחקים שבהם:
 
 ```js
 match.status === "Completed"
@@ -785,7 +799,7 @@ match.status === "Completed"
 
 #### `getScheduledMatches()`
 
-Returns all matches where:
+מחזירה את כל המשחקים שבהם:
 
 ```js
 match.status === "Scheduled"
@@ -795,29 +809,29 @@ match.status === "Scheduled"
 
 #### `getLeaderboard()`
 
-Returns teams sorted by points.
+מחזירה קבוצות שממוינות לפי נקודות.
 
-The sort order is:
+סדר המיון הוא:
 
-1. More points first.
-2. More wins first.
-3. Fewer losses first.
+1. יותר נקודות קודם.
+2. יותר ניצחונות קודם.
+3. פחות הפסדים קודם.
 
-Example:
+דוגמה:
 
 ```js
 return [...this.teams].sort((teamA, teamB) => teamB.points - teamA.points);
 ```
 
-The spread operator is used so the original `teams` array is not changed directly.
+משתמשים ב-spread operator כדי שהמערך המקורי `teams` לא ישתנה ישירות.
 
 ---
 
 #### `getTournamentStats()`
 
-Returns full tournament statistics.
+מחזירה סטטיסטיקות מלאות של הטורניר.
 
-Internally, it uses:
+בפנים היא משתמשת ב:
 
 ```js
 calculateTournamentStats({
@@ -829,11 +843,13 @@ calculateTournamentStats({
 
 ---
 
-## Game Modes and Rules
+<a id="game-modes-and-rules"></a>
 
-The project supports three game modes:
+## מצבי משחק וחוקים
 
-| Game Mode | Players Per Team | Win Points |
+הפרויקט תומך בשלושה מצבי משחק:
+
+| מצב משחק | שחקנים בכל קבוצה | נקודות על ניצחון |
 |---|---:|---:|
 | `Solo` | `1` | `3` |
 | `Duo` | `2` | `3` |
@@ -841,35 +857,37 @@ The project supports three game modes:
 
 ---
 
-### Solo Mode
+### מצב Solo
 
-A `Solo` team needs exactly one player.
+קבוצת `Solo` צריכה בדיוק שחקן אחד.
 
-This mode is useful for simple testing because each team has only one player.
-
----
-
-### Duo Mode
-
-A `Duo` team needs two players.
-
-This mode is useful for practicing arrays because every team stores more than one player.
+המצב הזה שימושי לבדיקות פשוטות, כי בכל קבוצה יש רק שחקן אחד.
 
 ---
 
-### Squad Mode
+### מצב Duo
 
-A `Squad` team needs three players.
+קבוצת `Duo` צריכה שני שחקנים.
 
-This mode is the best mode for the main demo scenario because it feels like a real team competition but is still simple enough for one day.
+המצב הזה שימושי לתרגול מערכים, כי כל קבוצה שומרת יותר משחקן אחד.
 
 ---
 
-## Match Results
+### מצב Squad
 
-Every scheduled match can become a completed match.
+קבוצת `Squad` צריכה שלושה שחקנים.
 
-A match starts like this:
+זה מצב המשחק הטוב ביותר לתרחיש הדמו המרכזי, כי הוא מרגיש כמו תחרות קבוצתית אמיתית ועדיין פשוט מספיק ליום אחד.
+
+---
+
+<a id="match-results"></a>
+
+## תוצאות משחקים
+
+כל משחק מתוזמן יכול להפוך למשחק שהושלם.
+
+משחק מתחיל כך:
 
 ```js
 {
@@ -886,7 +904,7 @@ A match starts like this:
 }
 ```
 
-After recording a result, it becomes:
+אחרי תיעוד תוצאה, הוא הופך ל:
 
 ```js
 {
@@ -903,25 +921,27 @@ After recording a result, it becomes:
 }
 ```
 
-This gives students practice with updating object properties after an action.
+כך התלמידים מתרגלים עדכון מאפיינים של אובייקט אחרי פעולה.
 
 ---
 
-## Statistics System
+<a id="statistics-system"></a>
 
-The statistics logic is stored in:
+## מערכת הסטטיסטיקות
+
+לוגיקת הסטטיסטיקות נמצאת ב:
 
 ```txt
 modules/stats.js
 ```
 
-The main function is:
+הפונקציה המרכזית היא:
 
 ```js
 calculateTournamentStats(data, statType)
 ```
 
-It receives:
+היא מקבלת:
 
 ```js
 {
@@ -931,9 +951,9 @@ It receives:
 }
 ```
 
-It can return different results depending on `statType`.
+היא יכולה להחזיר תוצאות שונות בהתאם ל-`statType`.
 
-Supported stat types include:
+סוגי הסטטיסטיקות הנתמכים כוללים:
 
 ```txt
 allPlayers
@@ -949,7 +969,7 @@ mostCommonGameMode
 allStats
 ```
 
-The function first creates useful collections:
+הפונקציה יוצרת קודם אוספים שימושיים:
 
 ```js
 const activePlayers = players.filter(player => player.isActive);
@@ -958,7 +978,7 @@ const scheduledMatches = matches.filter(match => match.status === "Scheduled");
 const completedMatches = matches.filter(match => match.status === "Completed");
 ```
 
-It also calculates:
+היא גם מחשבת:
 
 ```js
 averageTeamPoints
@@ -968,67 +988,67 @@ mostCommonGameMode
 
 ---
 
-### Available Statistics
+### סטטיסטיקות זמינות
 
 #### `allPlayers`
 
-Returns all players.
+מחזירה את כל השחקנים.
 
 ---
 
 #### `allTeams`
 
-Returns all teams.
+מחזירה את כל הקבוצות.
 
 ---
 
 #### `allMatches`
 
-Returns all matches.
+מחזירה את כל המשחקים.
 
 ---
 
 #### `activePlayers`
 
-Returns all active players.
+מחזירה את כל השחקנים הפעילים.
 
 ---
 
 #### `activeTeams`
 
-Returns all active teams.
+מחזירה את כל הקבוצות הפעילות.
 
 ---
 
 #### `scheduledMatches`
 
-Returns all scheduled matches.
+מחזירה את כל המשחקים המתוזמנים.
 
 ---
 
 #### `completedMatches`
 
-Returns all completed matches.
+מחזירה את כל המשחקים שהושלמו.
 
 ---
 
 #### `averageTeamPoints`
 
-Returns the average number of points across all teams.
+מחזירה את ממוצע הנקודות של כל הקבוצות.
 
 ---
 
 #### `topTeam`
 
-Returns the team with the highest number of points.
+מחזירה את הקבוצה עם מספר הנקודות הגבוה ביותר.
 
 ---
 
 #### `mostCommonGameMode`
 
-Returns an object showing how many teams exist for each game mode.
+מחזירה אובייקט שמראה כמה קבוצות קיימות לכל מצב משחק.
 
-Example:
+דוגמה:
 
 ```js
 {
@@ -1042,7 +1062,7 @@ Example:
 
 #### `allStats`
 
-Returns a full statistics object:
+מחזירה אובייקט סטטיסטיקות מלא:
 
 ```js
 {
@@ -1061,70 +1081,72 @@ Returns a full statistics object:
 
 ---
 
-## Printing Utilities
+<a id="printing-utilities"></a>
 
-The project keeps printing logic inside:
+## כלי הדפסה
+
+הפרויקט שומר את לוגיקת ההדפסה בתוך:
 
 ```txt
 modules/printUtils.js
 ```
 
-This makes the project cleaner because the business logic and terminal output are separated.
+כך הפרויקט נקי יותר, כי הלוגיקה העסקית והפלט לטרמינל מופרדים.
 
 ---
 
 ### `printTitle(title)`
 
-Prints a section title with separator lines.
+מדפיסה כותרת מקטע עם שורות הפרדה.
 
-Used to make the terminal output easier to read.
+משמשת כדי להפוך את פלט הטרמינל לקריא יותר.
 
 ---
 
 ### `printPlayers(players)`
 
-Prints:
+מדפיסה:
 
-- Player nickname
-- Player ID
-- Main role
-- Team ID
-- Status
-- Matches played
-- Total points
+- כינוי שחקן
+- ID שחקן
+- תפקיד מרכזי
+- ID קבוצה
+- סטטוס
+- מספר משחקים ששוחקו
+- סך נקודות
 
 ---
 
 ### `printTeams(teams)`
 
-Prints:
+מדפיסה:
 
-- Team name
-- Team ID
-- Game mode
-- Status
-- Number of players
-- Wins
-- Losses
-- Points
+- שם קבוצה
+- ID קבוצה
+- מצב משחק
+- סטטוס
+- מספר שחקנים
+- ניצחונות
+- הפסדים
+- נקודות
 
 ---
 
 ### `printMatches(matches)`
 
-Prints:
+מדפיסה:
 
-- Match ID
-- Home team ID
-- Away team ID
-- Game mode
-- Score
-- Winner team ID
-- Status
-- Created date
-- Completed date
+- ID משחק
+- ID קבוצת בית
+- ID קבוצת חוץ
+- מצב משחק
+- תוצאה
+- ID הקבוצה המנצחת
+- סטטוס
+- תאריך יצירה
+- תאריך השלמה
 
-If the match list is empty, it prints:
+אם רשימת המשחקים ריקה, היא מדפיסה:
 
 ```txt
 No matches found.
@@ -1134,9 +1156,9 @@ No matches found.
 
 ### `printLeaderboard(teams)`
 
-Prints the teams sorted by ranking.
+מדפיסה את הקבוצות לפי סדר הדירוג.
 
-Example output:
+פלט לדוגמה:
 
 ```txt
 1. Pixel Warriors - 6 points - 2 wins - 0 losses
@@ -1148,30 +1170,32 @@ Example output:
 
 ### `printAllTournamentStats(stats)`
 
-Prints:
+מדפיסה:
 
-- Total players
-- Total teams
-- Total matches
-- Scheduled matches
-- Completed matches
-- Average team points
-- Top team
-- Count of each game mode
+- סך כל השחקנים
+- סך כל הקבוצות
+- סך כל המשחקים
+- משחקים מתוזמנים
+- משחקים שהושלמו
+- ממוצע נקודות לקבוצה
+- הקבוצה המובילה
+- כמות מכל מצב משחק
 
 ---
 
-## CommonJS Example
+<a id="commonjs-example"></a>
 
-Although the main project uses ES Modules, the project also includes a CommonJS example.
+## דוגמת CommonJS
 
-The folder is:
+למרות שהפרויקט הראשי משתמש ב-ES Modules, הפרויקט כולל גם דוגמת CommonJS.
+
+התיקייה היא:
 
 ```txt
 commonjs/
 ```
 
-It contains:
+היא מכילה:
 
 ```txt
 package.json
@@ -1179,7 +1203,7 @@ scoreUtils.js
 testCommonJS.js
 ```
 
-The `commonjs/package.json` file tells Node.js that files in this folder should use CommonJS:
+קובץ `commonjs/package.json` אומר ל-Node.js שהקבצים בתיקייה הזאת צריכים להשתמש ב-CommonJS:
 
 ```json
 {
@@ -1189,9 +1213,9 @@ The `commonjs/package.json` file tells Node.js that files in this folder should 
 
 ---
 
-### CommonJS Utilities
+### כלי CommonJS
 
-`scoreUtils.js` includes:
+`scoreUtils.js` כולל:
 
 ```js
 isValidScore(score)
@@ -1200,7 +1224,7 @@ calculateAveragePoints(points, matchesPlayed)
 formatScore(homeScore, awayScore)
 ```
 
-These are exported using:
+הפונקציות האלה מיוצאות בעזרת:
 
 ```js
 module.exports = {
@@ -1211,15 +1235,15 @@ module.exports = {
 };
 ```
 
-This is different from ES Modules.
+זה שונה מ-ES Modules.
 
-In ES Modules, the export would usually look like:
+ב-ES Modules, הייצוא בדרך כלל ייראה כך:
 
 ```js
 export function isValidScore(score) {}
 ```
 
-or:
+או:
 
 ```js
 export {
@@ -1230,9 +1254,9 @@ export {
 
 ---
 
-### CommonJS Test File
+### קובץ בדיקת CommonJS
 
-`testCommonJS.js` imports the utilities using:
+`testCommonJS.js` מייבא את כלי העזר בעזרת:
 
 ```js
 const {
@@ -1243,7 +1267,7 @@ const {
 } = require("./scoreUtils.js");
 ```
 
-Then it runs a few test logs:
+לאחר מכן הוא מריץ כמה הדפסות בדיקה:
 
 ```js
 console.log("CommonJS Test");
@@ -1253,13 +1277,15 @@ console.log("Average points:", calculateAveragePoints(30, 5));
 console.log("Formatted score:", formatScore(12, 8));
 ```
 
-This file is used to demonstrate how CommonJS works separately from the main ES Module project.
+הקובץ הזה משמש להדגמה של אופן העבודה של CommonJS בנפרד מפרויקט ה-ES Module הראשי.
 
 ---
 
-## How to Run the Project
+<a id="how-to-run-the-project"></a>
 
-### 1. Create the Project Folder
+## איך להריץ את הפרויקט
+
+### 1. יצירת תיקיית הפרויקט
 
 ```bash
 mkdir game-tournament-manager-one-day-training
@@ -1268,13 +1294,13 @@ cd game-tournament-manager-one-day-training
 
 ---
 
-### 2. Create `package.json`
+### 2. יצירת `package.json`
 
 ```bash
 npm init -y
 ```
 
-Then update it to include:
+לאחר מכן עדכנו אותו כך שיכלול:
 
 ```json
 {
@@ -1289,13 +1315,13 @@ Then update it to include:
 
 ---
 
-### 3. Run the Main Project
+### 3. הרצת הפרויקט הראשי
 
 ```bash
 npm start
 ```
 
-or:
+או:
 
 ```bash
 node main.js
@@ -1303,13 +1329,13 @@ node main.js
 
 ---
 
-### 4. Run the CommonJS Example
+### 4. הרצת דוגמת CommonJS
 
 ```bash
 npm run commonjs
 ```
 
-or:
+או:
 
 ```bash
 node commonjs/testCommonJS.js
@@ -1317,15 +1343,17 @@ node commonjs/testCommonJS.js
 
 ---
 
-## Application Flow
+<a id="application-flow"></a>
 
-The main app flow is controlled by `main.js`.
+## זרימת האפליקציה
+
+זרימת האפליקציה הראשית נשלטת על ידי `main.js`.
 
 ---
 
-### Step 1: Import Required Modules
+### שלב 1: ייבוא המודולים הדרושים
 
-The application imports the ID generator, the tournament manager, and printing utilities.
+האפליקציה מייבאת את מחולל המזהים, את מנהל הטורניר ואת כלי ההדפסה.
 
 ```js
 import { createIdGenerator } from "./modules/idGenerator.js";
@@ -1342,9 +1370,9 @@ import {
 
 ---
 
-### Step 2: Create ID Generators
+### שלב 2: יצירת מחוללי מזהים
 
-Three ID generators are created:
+נוצרים שלושה מחוללי מזהים:
 
 ```js
 const generatePlayerId = createIdGenerator("PLY");
@@ -1352,11 +1380,11 @@ const generateTeamId = createIdGenerator("TEAM");
 const generateMatchId = createIdGenerator("MATCH");
 ```
 
-Each one has its own counter.
+לכל אחד מהם יש מונה משלו.
 
 ---
 
-### Step 3: Create the Tournament Manager
+### שלב 3: יצירת מנהל הטורניר
 
 ```js
 const tournament = new TournamentManager({
@@ -1366,13 +1394,13 @@ const tournament = new TournamentManager({
 });
 ```
 
-This creates the main object that controls the tournament system.
+זה יוצר את האובייקט המרכזי ששולט במערכת הטורניר.
 
 ---
 
-### Step 4: Create Players
+### שלב 4: יצירת שחקנים
 
-The project creates six players:
+הפרויקט יוצר שישה שחקנים:
 
 ```js
 const player1 = tournament.createPlayer("ShadowFox", "Attacker");
@@ -1385,9 +1413,9 @@ const player6 = tournament.createPlayer("BugSlayer", "Defender");
 
 ---
 
-### Step 5: Create Teams
+### שלב 5: יצירת קבוצות
 
-The project creates two teams:
+הפרויקט יוצר שתי קבוצות:
 
 ```js
 const team1 = tournament.createTeam("Pixel Warriors", "Squad");
@@ -1396,9 +1424,9 @@ const team2 = tournament.createTeam("Console Kings", "Squad");
 
 ---
 
-### Step 6: Add Players to Teams
+### שלב 6: הוספת שחקנים לקבוצות
 
-Each team receives three players:
+כל קבוצה מקבלת שלושה שחקנים:
 
 ```js
 tournament.addPlayerToTeam(player1.id, team1.id);
@@ -1412,9 +1440,9 @@ tournament.addPlayerToTeam(player6.id, team2.id);
 
 ---
 
-### Step 7: Schedule Matches
+### שלב 7: תזמון משחקים
 
-The project schedules two matches:
+הפרויקט מתזמן שני משחקים:
 
 ```js
 const match1 = tournament.scheduleMatch(team1.id, team2.id);
@@ -1423,9 +1451,9 @@ const match2 = tournament.scheduleMatch(team2.id, team1.id);
 
 ---
 
-### Step 8: Record Match Results
+### שלב 8: תיעוד תוצאות משחקים
 
-The project records two match results:
+הפרויקט מתעד שתי תוצאות משחק:
 
 ```js
 tournament.recordMatchResult(match1.id, 12, 8);
@@ -1434,34 +1462,34 @@ tournament.recordMatchResult(match2.id, 7, 10);
 
 ---
 
-### Step 9: Try an Invalid Result
+### שלב 9: ניסיון לתעד תוצאה לא תקינה
 
-The project tries to record a result for a completed match again:
+הפרויקט מנסה לתעד שוב תוצאה עבור משחק שכבר הושלם:
 
 ```js
 tournament.recordMatchResult(match1.id, 5, 4);
 ```
 
-This should fail because the match is already completed.
+זה אמור להיכשל כי המשחק כבר הושלם.
 
 ---
 
-### Step 10: Search Player by Nickname
+### שלב 10: חיפוש שחקן לפי כינוי
 
-The project searches for players whose nickname includes `"shadow"`:
+הפרויקט מחפש שחקנים שהכינוי שלהם כולל `"shadow"`:
 
 ```js
 const searchResults = tournament.findPlayerByNickname("shadow");
 printPlayers(searchResults);
 ```
 
-The search is case-insensitive.
+החיפוש לא תלוי באותיות גדולות או קטנות.
 
 ---
 
-### Step 11: Print Match History
+### שלב 11: הדפסת היסטוריית משחקים
 
-The project prints all completed matches:
+הפרויקט מדפיס את כל המשחקים שהושלמו:
 
 ```js
 printMatches(tournament.getCompletedMatches());
@@ -1469,9 +1497,9 @@ printMatches(tournament.getCompletedMatches());
 
 ---
 
-### Step 12: Print Leaderboard
+### שלב 12: הדפסת טבלת דירוג
 
-The project prints the tournament leaderboard:
+הפרויקט מדפיס את טבלת הדירוג של הטורניר:
 
 ```js
 printLeaderboard(tournament.getLeaderboard());
@@ -1479,9 +1507,9 @@ printLeaderboard(tournament.getLeaderboard());
 
 ---
 
-### Step 13: Print Tournament Statistics
+### שלב 13: הדפסת סטטיסטיקות טורניר
 
-The project calculates and prints full tournament statistics:
+הפרויקט מחשב ומדפיס סטטיסטיקות טורניר מלאות:
 
 ```js
 const stats = tournament.getTournamentStats();
@@ -1490,9 +1518,9 @@ printAllTournamentStats(stats);
 
 ---
 
-### Step 14: Print Final State
+### שלב 14: הדפסת מצב סופי
 
-At the end, the project prints all players, teams, and matches again:
+בסוף, הפרויקט מדפיס שוב את כל השחקנים, הקבוצות והמשחקים:
 
 ```js
 printPlayers(tournament.getAllPlayers());
@@ -1500,15 +1528,17 @@ printTeams(tournament.getAllTeams());
 printMatches(tournament.getAllMatches());
 ```
 
-This shows how the data changed after all operations.
+זה מראה איך הנתונים השתנו אחרי כל הפעולות.
 
 ---
 
-## Core Data Models
+<a id="core-data-models"></a>
 
-### Player Model
+## מודלי הנתונים המרכזיים
 
-A player object looks like this:
+### מודל שחקן
+
+אובייקט שחקן נראה כך:
 
 ```js
 {
@@ -1524,22 +1554,22 @@ A player object looks like this:
 }
 ```
 
-Fields:
+שדות:
 
-| Field | Type | Meaning |
+| שדה | סוג | משמעות |
 |---|---|---|
-| `id` | string | Unique player ID |
-| `nickname` | string | Player display name |
-| `mainRole` | string | Main player role |
-| `teamId` | string or null | ID of the team the player belongs to |
-| `isActive` | boolean | Whether the player is active |
-| `stats` | object | Player performance data |
+| `id` | string | ID ייחודי של שחקן |
+| `nickname` | string | שם תצוגה של השחקן |
+| `mainRole` | string | התפקיד המרכזי של השחקן |
+| `teamId` | string or null | ID של הקבוצה שאליה השחקן שייך |
+| `isActive` | boolean | האם השחקן פעיל |
+| `stats` | object | נתוני ביצועים של השחקן |
 
 ---
 
-### Team Model
+### מודל קבוצה
 
-A team object looks like this:
+אובייקט קבוצה נראה כך:
 
 ```js
 {
@@ -1554,24 +1584,24 @@ A team object looks like this:
 }
 ```
 
-Fields:
+שדות:
 
-| Field | Type | Meaning |
+| שדה | סוג | משמעות |
 |---|---|---|
-| `id` | string | Unique team ID |
-| `name` | string | Team name |
-| `gameMode` | string | Team game mode |
-| `players` | array | List of players in the team |
-| `wins` | number | Number of wins |
-| `losses` | number | Number of losses |
-| `points` | number | Ranking points |
-| `isActive` | boolean | Whether the team is active |
+| `id` | string | ID ייחודי של קבוצה |
+| `name` | string | שם הקבוצה |
+| `gameMode` | string | מצב המשחק של הקבוצה |
+| `players` | array | רשימת השחקנים בקבוצה |
+| `wins` | number | מספר ניצחונות |
+| `losses` | number | מספר הפסדים |
+| `points` | number | נקודות דירוג |
+| `isActive` | boolean | האם הקבוצה פעילה |
 
 ---
 
-### Match Model
+### מודל משחק
 
-A match object looks like this:
+אובייקט משחק נראה כך:
 
 ```js
 {
@@ -1588,42 +1618,44 @@ A match object looks like this:
 }
 ```
 
-Fields:
+שדות:
 
-| Field | Type | Meaning |
+| שדה | סוג | משמעות |
 |---|---|---|
-| `id` | string | Unique match ID |
-| `homeTeamId` | string | First team ID |
-| `awayTeamId` | string | Second team ID |
-| `gameMode` | string | Match game mode |
-| `homeScore` | number or null | Home team score |
-| `awayScore` | number or null | Away team score |
-| `winnerTeamId` | string or null | Winning team ID |
-| `status` | string | `Scheduled` or `Completed` |
-| `createdAt` | string | ISO date string for creation |
-| `completedAt` | string or null | ISO date string for completion |
+| `id` | string | ID ייחודי של משחק |
+| `homeTeamId` | string | ID של הקבוצה הראשונה |
+| `awayTeamId` | string | ID של הקבוצה השנייה |
+| `gameMode` | string | מצב המשחק |
+| `homeScore` | number or null | ניקוד קבוצת הבית |
+| `awayScore` | number or null | ניקוד קבוצת החוץ |
+| `winnerTeamId` | string or null | ID של הקבוצה המנצחת |
+| `status` | string | `Scheduled` או `Completed` |
+| `createdAt` | string | מחרוזת תאריך ISO של יצירת המשחק |
+| `completedAt` | string or null | מחרוזת תאריך ISO של השלמת המשחק |
 
 ---
 
-## JavaScript Concepts Practiced
+<a id="javascript-concepts-practiced"></a>
 
-This project is useful because it practices many core JavaScript topics.
+## מושגי JavaScript שמתורגלים
+
+הפרויקט שימושי כי הוא מתרגל הרבה נושאי ליבה ב-JavaScript.
 
 ---
 
 ### Variables
 
-The project uses variables to store:
+הפרויקט משתמש במשתנים כדי לשמור:
 
-- Players
-- Teams
-- Matches
-- Search results
-- Statistics
-- Scores
-- Game mode rules
+- שחקנים
+- קבוצות
+- משחקים
+- תוצאות חיפוש
+- סטטיסטיקות
+- ניקודים
+- חוקי מצבי משחק
 
-Examples:
+דוגמאות:
 
 ```js
 const player1 = tournament.createPlayer(...);
@@ -1634,7 +1666,7 @@ const stats = tournament.getTournamentStats();
 
 ### Functions
 
-The project uses many functions, including:
+הפרויקט משתמש בפונקציות רבות, כולל:
 
 - Factory functions
 - Utility functions
@@ -1642,7 +1674,7 @@ The project uses many functions, including:
 - Generator functions
 - CommonJS functions
 
-Examples:
+דוגמאות:
 
 ```js
 createPlayer();
@@ -1656,7 +1688,7 @@ printTeams();
 
 ### Closures
 
-The ID generator is the clearest closure example.
+מחולל המזהים הוא דוגמת ה-closure הברורה ביותר.
 
 ```js
 export function createIdGenerator(prefix = "ID") {
@@ -1669,13 +1701,13 @@ export function createIdGenerator(prefix = "ID") {
 }
 ```
 
-The inner `generateId` function remembers `currentId`.
+הפונקציה הפנימית `generateId` זוכרת את `currentId`.
 
 ---
 
 ### Classes
 
-The project uses a class for the main tournament logic:
+הפרויקט משתמש במחלקה עבור לוגיקת הטורניר המרכזית:
 
 ```js
 export class TournamentManager {
@@ -1683,15 +1715,15 @@ export class TournamentManager {
 }
 ```
 
-This demonstrates object-oriented programming.
+זה מדגים תכנות מונחה עצמים.
 
 ---
 
 ### Factory Functions
 
-Factory functions are used for creating clean objects.
+Factory functions משמשות ליצירת אובייקטים נקיים.
 
-Examples:
+דוגמאות:
 
 ```js
 createPlayer();
@@ -1699,19 +1731,19 @@ createTeam();
 createMatch();
 ```
 
-This makes object creation more organized.
+זה הופך את יצירת האובייקטים למסודרת יותר.
 
 ---
 
 ### Arrays
 
-The project uses arrays for:
+הפרויקט משתמש במערכים עבור:
 
-- Players
-- Teams
-- Matches
+- שחקנים
+- קבוצות
+- משחקים
 
-Important array methods used:
+מתודות מערך חשובות שבהן משתמשים:
 
 ```js
 find()
@@ -1726,15 +1758,15 @@ sort()
 
 ### Objects
 
-Objects are used for:
+אובייקטים משמשים עבור:
 
-- Players
-- Teams
-- Matches
-- Game mode rules
-- Statistics
+- שחקנים
+- קבוצות
+- משחקים
+- חוקי מצבי משחק
+- סטטיסטיקות
 
-Example:
+דוגמה:
 
 ```js
 this.gameModeRules = {
@@ -1757,7 +1789,7 @@ this.gameModeRules = {
 
 ### Object Methods
 
-The project can use object methods such as:
+הפרויקט יכול להשתמש במתודות אובייקט כמו:
 
 ```js
 Object.keys()
@@ -1765,13 +1797,13 @@ Object.values()
 Object.entries()
 ```
 
-These are useful for printing game mode counts and statistics.
+הן שימושיות להדפסת ספירת מצבי משחק וסטטיסטיקות.
 
 ---
 
 ### String Methods
 
-The project uses string methods like:
+הפרויקט משתמש במתודות מחרוזת כמו:
 
 ```js
 trim()
@@ -1779,15 +1811,15 @@ toLowerCase()
 includes()
 ```
 
-These are used for cleaning names and searching players.
+הן משמשות לניקוי שמות ולחיפוש שחקנים.
 
 ---
 
 ### Conditions
 
-The project uses many `if` statements for validation.
+הפרויקט משתמש בהרבה משפטי `if` עבור ולידציה.
 
-Examples:
+דוגמאות:
 
 ```js
 if (!team) {
@@ -1800,22 +1832,22 @@ if (!team) {
 
 ### Switch Statement
 
-The statistics file can use a `switch` statement to return different statistics based on `statType`.
+קובץ הסטטיסטיקות יכול להשתמש ב-`switch` כדי להחזיר סטטיסטיקות שונות לפי `statType`.
 
 ---
 
 ### Modules
 
-The project demonstrates two module systems.
+הפרויקט מדגים שתי מערכות מודולים.
 
-Main project:
+הפרויקט הראשי:
 
 ```js
 import
 export
 ```
 
-CommonJS folder:
+תיקיית CommonJS:
 
 ```js
 require
@@ -1824,73 +1856,77 @@ module.exports
 
 ---
 
-## Validation and Error Handling
+<a id="validation-and-error-handling"></a>
 
-The project includes basic validation to prevent invalid actions.
+## ולידציה וטיפול בשגיאות
 
----
-
-### Player Creation Validation
-
-A player cannot be created if:
-
-- The nickname is empty.
-- The main role is empty.
-- The nickname already exists.
+הפרויקט כולל ולידציה בסיסית שמונעת פעולות לא תקינות.
 
 ---
 
-### Team Creation Validation
+### ולידציה ביצירת שחקן
 
-A team cannot be created if:
+אי אפשר ליצור שחקן אם:
 
-- The team name is empty.
-- The game mode is invalid.
-- The team name already exists.
-
----
-
-### Add Player to Team Validation
-
-Adding a player to a team fails if:
-
-- The player does not exist.
-- The team does not exist.
-- The player is inactive.
-- The team is inactive.
-- The player already belongs to a team.
-- The team is already full.
+- הכינוי ריק.
+- התפקיד המרכזי ריק.
+- הכינוי כבר קיים.
 
 ---
 
-### Schedule Match Validation
+### ולידציה ביצירת קבוצה
 
-Scheduling a match fails if:
+אי אפשר ליצור קבוצה אם:
 
-- One of the teams does not exist.
-- The two team IDs are the same.
-- One of the teams is inactive.
-- The teams do not use the same game mode.
-- One of the teams does not have enough players.
+- שם הקבוצה ריק.
+- מצב המשחק לא תקין.
+- שם הקבוצה כבר קיים.
 
 ---
 
-### Record Match Result Validation
+### ולידציה בהוספת שחקן לקבוצה
 
-Recording a result fails if:
+הוספת שחקן לקבוצה נכשלת אם:
 
-- The match does not exist.
-- The match is already completed.
-- One of the scores is invalid.
-- The scores are equal.
+- השחקן לא קיים.
+- הקבוצה לא קיימת.
+- השחקן לא פעיל.
+- הקבוצה לא פעילה.
+- השחקן כבר שייך לקבוצה.
+- הקבוצה כבר מלאה.
 
 ---
 
-## Example Scenario
+### ולידציה בתזמון משחק
 
-The demo scenario creates these players:
+תזמון משחק נכשל אם:
 
-| Player | Role |
+- אחת הקבוצות לא קיימת.
+- שני מזהי הקבוצות זהים.
+- אחת הקבוצות לא פעילה.
+- הקבוצות לא משתמשות באותו מצב משחק.
+- לאחת הקבוצות אין מספיק שחקנים.
+
+---
+
+### ולידציה בתיעוד תוצאת משחק
+
+תיעוד תוצאה נכשל אם:
+
+- המשחק לא קיים.
+- המשחק כבר הושלם.
+- אחד הניקודים לא תקין.
+- הניקודים שווים.
+
+---
+
+<a id="example-scenario"></a>
+
+## תרחיש לדוגמה
+
+תרחיש הדמו יוצר את השחקנים האלה:
+
+| שחקן | תפקיד |
 |---|---|
 | ShadowFox | Attacker |
 | RocketBee | Support |
@@ -1899,40 +1935,42 @@ The demo scenario creates these players:
 | CyberCat | Support |
 | BugSlayer | Defender |
 
-Then the system creates these teams:
+לאחר מכן המערכת יוצרת את הקבוצות האלה:
 
-| Team | Game Mode |
+| קבוצה | מצב משחק |
 |---|---|
 | Pixel Warriors | Squad |
 | Console Kings | Squad |
 
-Then the system performs actions such as:
+לאחר מכן המערכת מבצעת פעולות כמו:
 
-- Adding three players to Pixel Warriors.
-- Adding three players to Console Kings.
-- Scheduling two matches between the teams.
-- Recording two valid results.
-- Trying to record a result for a completed match.
-- Searching for ShadowFox.
-- Printing completed matches.
-- Printing the leaderboard.
-- Printing final tournament statistics.
+- הוספת שלושה שחקנים ל-Pixel Warriors.
+- הוספת שלושה שחקנים ל-Console Kings.
+- תזמון שני משחקים בין הקבוצות.
+- תיעוד שתי תוצאות תקינות.
+- ניסיון לתעד תוצאה עבור משחק שכבר הושלם.
+- חיפוש ShadowFox.
+- הדפסת משחקים שהושלמו.
+- הדפסת טבלת הדירוג.
+- הדפסת סטטיסטיקות הטורניר הסופיות.
 
-This scenario helps test many parts of the system in one run.
+התרחיש הזה עוזר לבדוק חלקים רבים של המערכת בהרצה אחת.
 
 ---
 
-## Current Limitations
+<a id="current-limitations"></a>
 
-This project is a training project, so it has some limitations.
+## מגבלות נוכחיות
 
-### 1. No Database
+הפרויקט הוא פרויקט תרגול, ולכן יש לו כמה מגבלות.
 
-All data is stored in memory.
+### 1. אין מסד נתונים
 
-When the program stops, all data is lost.
+כל הנתונים נשמרים בזיכרון.
 
-There is no database like:
+כאשר התוכנית נעצרת, כל הנתונים נמחקים.
+
+אין מסד נתונים כמו:
 
 - MongoDB
 - MySQL
@@ -1941,35 +1979,35 @@ There is no database like:
 
 ---
 
-### 2. No User Input
+### 2. אין קלט מהמשתמש
 
-The project does not ask the user for input.
+הפרויקט לא מבקש קלט מהמשתמש.
 
-All actions are hardcoded inside `main.js`.
-
----
-
-### 3. No API
-
-The project does not expose an HTTP API.
-
-There is no Express server.
+כל הפעולות כתובות ישירות בתוך `main.js`.
 
 ---
 
-### 4. No Frontend
+### 3. אין API
 
-The project does not have a web interface.
+הפרויקט לא חושף HTTP API.
 
-Everything is printed in the terminal.
+אין שרת Express.
 
 ---
 
-### 5. No Authentication
+### 4. אין Frontend
 
-There is no login system.
+לפרויקט אין ממשק ווב.
 
-There are no user roles such as:
+הכל מודפס בטרמינל.
+
+---
+
+### 5. אין Authentication
+
+אין מערכת התחברות.
+
+אין תפקידי משתמש כמו:
 
 - Admin
 - Player
@@ -1977,15 +2015,15 @@ There are no user roles such as:
 
 ---
 
-### 6. No Persistent Match Storage
+### 6. אין שמירה קבועה של משחקים
 
-Matches are stored only in memory.
+המשחקים נשמרים רק בזיכרון.
 
 ---
 
-### 7. No Unit Tests
+### 7. אין Unit Tests
 
-The project currently demonstrates behavior through `main.js`, but it does not include a testing framework like:
+הפרויקט כרגע מדגים התנהגות דרך `main.js`, אבל הוא לא כולל testing framework כמו:
 
 - Jest
 - Vitest
@@ -1993,25 +2031,27 @@ The project currently demonstrates behavior through `main.js`, but it does not i
 
 ---
 
-### 8. No Draws
+### 8. אין תיקו
 
-The project does not support tied matches.
+הפרויקט לא תומך במשחקים שמסתיימים בתיקו.
 
-This keeps the ranking logic simple for a one-day project.
-
----
-
-## Possible Future Improvements
-
-The project can be improved in many ways.
+זה שומר על לוגיקת דירוג פשוטה עבור פרויקט של יום אחד.
 
 ---
 
-### 1. Add Draw Support
+<a id="possible-future-improvements"></a>
 
-A future version could allow matches to end in a draw.
+## שיפורים אפשריים בעתיד
 
-Example points system:
+אפשר לשפר את הפרויקט בדרכים רבות.
+
+---
+
+### 1. הוספת תמיכה בתיקו
+
+גרסה עתידית יכולה לאפשר משחקים שמסתיימים בתיקו.
+
+דוגמה למערכת נקודות:
 
 ```txt
 Win: 3 points
@@ -2021,47 +2061,47 @@ Loss: 0 points
 
 ---
 
-### 2. Add Remove Player From Team
+### 2. הוספת הסרת שחקן מקבוצה
 
-A future method could be:
+מתודה עתידית יכולה להיות:
 
 ```js
 removePlayerFromTeam(playerId, teamId)
 ```
 
-This would allow teams to change their roster.
+זה יאפשר לקבוצות לשנות את הסגל שלהן.
 
 ---
 
-### 3. Add Team Deactivation
+### 3. הוספת השבתת קבוצה
 
-A future method could be:
+מתודה עתידית יכולה להיות:
 
 ```js
 deactivateTeam(teamId)
 ```
 
-This would prevent inactive teams from playing new matches.
+זה ימנע מקבוצות לא פעילות לשחק משחקים חדשים.
 
 ---
 
-### 4. Add User Input
+### 4. הוספת קלט מהמשתמש
 
-The project could become interactive by using:
+הפרויקט יכול להפוך לאינטראקטיבי בעזרת:
 
 - `readline`
 - `inquirer`
 - command-line arguments
 
-This would allow the user to choose actions from a menu.
+זה יאפשר למשתמש לבחור פעולות מתוך תפריט.
 
 ---
 
-### 5. Add an Express API
+### 5. הוספת Express API
 
-The tournament logic could be exposed through REST endpoints.
+אפשר לחשוף את לוגיקת הטורניר דרך REST endpoints.
 
-Example routes:
+נתיבים לדוגמה:
 
 ```txt
 GET /players
@@ -2077,21 +2117,21 @@ GET /stats
 
 ---
 
-### 6. Add Unit Tests
+### 6. הוספת Unit Tests
 
-Tests could be added for:
+אפשר להוסיף בדיקות עבור:
 
-- Player creation
-- Team creation
-- Adding players to teams
-- Scheduling matches
-- Recording results
-- Failed validations
-- Leaderboard sorting
-- Statistics
-- ID generation
+- יצירת שחקנים
+- יצירת קבוצות
+- הוספת שחקנים לקבוצות
+- תזמון משחקים
+- תיעוד תוצאות
+- ולידציות שנכשלות
+- מיון טבלת דירוג
+- סטטיסטיקות
+- יצירת מזהים
 
-Example test framework:
+testing framework לדוגמה:
 
 ```bash
 npm install --save-dev vitest
@@ -2099,11 +2139,11 @@ npm install --save-dev vitest
 
 ---
 
-### 7. Add Multiple Tournaments
+### 7. הוספת כמה טורנירים
 
-A future version could support more than one tournament.
+גרסה עתידית יכולה לתמוך ביותר מטורניר אחד.
 
-Example:
+דוגמה:
 
 ```js
 createTournament("Winter Cup");
@@ -2112,67 +2152,67 @@ createTournament("Summer Cup");
 
 ---
 
-### 8. Add Player Awards
+### 8. הוספת פרסי שחקנים
 
-The project could calculate awards such as:
+הפרויקט יכול לחשב פרסים כמו:
 
-- Most active player
-- Best team
-- Highest scoring player
+- השחקן הפעיל ביותר
+- הקבוצה הטובה ביותר
+- השחקן עם הניקוד הגבוה ביותר
 - Rookie of the tournament
 
 ---
 
-## Strengths of the Project
+## נקודות החוזקה של הפרויקט
 
-This project has several strong points:
+לפרויקט יש כמה נקודות חזקות:
 
-- Clear separation between files.
-- Good practice of ES Modules.
-- Good use of factory functions.
-- Good closure example with ID generation.
-- Centralized tournament logic inside `TournamentManager`.
-- Simple and understandable validation rules.
-- Match history is stored clearly.
-- Statistics are separated into their own module.
-- Printing is separated into its own utility module.
-- CommonJS is demonstrated separately.
-- The project is fun and easy to understand.
-- The scope is realistic for one day.
-
----
-
-## Main Learning Value
-
-The biggest learning value of this project is that it combines many JavaScript concepts into one understandable system.
-
-Instead of practicing each topic separately, the project connects them together:
-
-- Closures generate IDs.
-- Factory functions create objects.
-- A class manages tournament logic.
-- Arrays store players, teams, and matches.
-- Array methods search, filter, sort, and calculate data.
-- Objects store rules and statistics.
-- Modules separate code into files.
-- Validation protects the system from invalid actions.
-- Console printing shows the result of each action.
-
-This makes the project a good first step toward building larger Node.js applications.
+- הפרדה ברורה בין קבצים.
+- תרגול טוב של ES Modules.
+- שימוש טוב ב-factory functions.
+- דוגמת closure טובה דרך יצירת מזהים.
+- לוגיקת טורניר מרכזית בתוך `TournamentManager`.
+- חוקי ולידציה פשוטים וברורים.
+- היסטוריית משחקים נשמרת בצורה ברורה.
+- סטטיסטיקות מופרדות למודול משלהן.
+- הדפסה מופרדת למודול עזר משלה.
+- CommonJS מודגם בנפרד.
+- הפרויקט מהנה וקל להבנה.
+- ההיקף ריאליסטי ליום אחד.
 
 ---
 
-## Repository Link
+## ערך הלמידה המרכזי
 
-Add the repository link after creating the project.
+ערך הלמידה הגדול ביותר של הפרויקט הוא שהוא מחבר הרבה מושגי JavaScript למערכת אחת מובנת.
 
-Suggested repository name:
+במקום לתרגל כל נושא בנפרד, הפרויקט מחבר אותם יחד:
+
+- Closures יוצרים מזהים.
+- Factory functions יוצרות אובייקטים.
+- מחלקה מנהלת את לוגיקת הטורניר.
+- מערכים שומרים שחקנים, קבוצות ומשחקים.
+- מתודות מערך מחפשות, מסננות, ממיינות ומחשבות נתונים.
+- אובייקטים שומרים חוקים וסטטיסטיקות.
+- מודולים מפרידים את הקוד לקבצים.
+- ולידציה מגינה על המערכת מפעולות לא תקינות.
+- הדפסה לקונסול מציגה את התוצאה של כל פעולה.
+
+כך הפרויקט הופך לצעד ראשון טוב לקראת בניית אפליקציות Node.js גדולות יותר.
+
+---
+
+## קישור למאגר
+
+הוסיפו את קישור המאגר אחרי יצירת הפרויקט.
+
+שם מאגר מוצע:
 
 ```txt
 game-tournament-manager-one-day-training
 ```
 
-Suggested GitHub URL:
+כתובת GitHub מוצעת:
 
 ```txt
 https://github.com/yosefhaim707/game-tournament-manager-one-day-training
@@ -2180,13 +2220,15 @@ https://github.com/yosefhaim707/game-tournament-manager-one-day-training
 
 ---
 
-## Final Notes
+<a id="final-notes"></a>
 
-`game-tournament-manager-one-day-training` is a small but complete Node.js tournament simulation.
+## הערות סיום
 
-It is not meant to be a real esports platform, but it is a strong learning project because it shows how to organize logic, data, validation, statistics, and utility functions in a clean way.
+`game-tournament-manager-one-day-training` הוא סימולציית טורניר קטנה אך שלמה ב-Node.js.
 
-The most important files are:
+הוא לא מיועד להיות פלטפורמת esports אמיתית, אבל הוא פרויקט לימודי חזק כי הוא מראה איך לארגן לוגיקה, נתונים, ולידציה, סטטיסטיקות ופונקציות עזר בצורה נקייה.
+
+הקבצים החשובים ביותר הם:
 
 ```txt
 main.js
@@ -2199,13 +2241,12 @@ modules/stats.js
 modules/printUtils.js
 ```
 
-The main ideas to understand from this project are:
+הרעיונות המרכזיים שחשוב להבין מהפרויקט:
 
-- How data flows from `main.js` into `TournamentManager`.
-- How `TournamentManager` controls the system.
-- How factory functions create clean objects.
-- How match results update team rankings.
-- How statistics are calculated from arrays.
-- How closures can generate private counters.
-- How ES Modules and CommonJS are different.
-
+- איך הנתונים זורמים מ-`main.js` אל `TournamentManager`.
+- איך `TournamentManager` שולט במערכת.
+- איך factory functions יוצרות אובייקטים נקיים.
+- איך תוצאות משחקים מעדכנות את דירוג הקבוצות.
+- איך סטטיסטיקות מחושבות ממערכים.
+- איך closures יכולות ליצור מונים פרטיים.
+- איך ES Modules ו-CommonJS שונים זה מזה.
