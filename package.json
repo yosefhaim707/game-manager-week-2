@@ -1,0 +1,12 @@
+{
+  "name": "game-tournament-manager-one-day-training",
+  "version": "1.0.0",
+  "description": "A simple Node.js training project for managing a game tournament.",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js",
+    "commonjs": "node commonjs/testCommonJS.js"
+  },
+  "type": "module",
+  "license": "MIT"
+}
