@@ -2202,20 +2202,11 @@ createTournament("Summer Cup");
 
 ---
 
-## קישור למאגר
+## קישור לפרוייקט
 
-הוסיפו את קישור המאגר אחרי יצירת הפרויקט.
-
-שם מאגר מוצע:
 
 ```txt
-game-tournament-manager-one-day-training
-```
-
-כתובת GitHub מוצעת:
-
-```txt
-https://github.com/yosefhaim707/game-tournament-manager-one-day-training
+https://github.com/yosefhaim707/game-manager-week-2
 ```
 
 ---
