@@ -1,4 +1,4 @@
-# פרויקט תרגול יומי: מנהל טורניר משחקים
+# פרויקט תרגול: מנהל טורניר משחקים
 
 <a id="project-summary"></a>
 
@@ -41,21 +41,22 @@
 3. [טכנולוגיות בשימוש](#technologies-used)
 4. [משך זמן צפוי](#expected-duration)
 5. [מבנה הפרויקט](#project-structure)
-6. [איך להריץ את הפרויקט](#how-to-run-the-project)
-7. [זרימת האפליקציה](#application-flow)
-8. [מודלי הנתונים המרכזיים](#core-data-models)
-9. [מחלקת TournamentManager](#tournamentmanager-class)
-10. [מצבי משחק וחוקים](#game-modes-and-rules)
-11. [תוצאות משחקים](#match-results)
-12. [מערכת הסטטיסטיקות](#statistics-system)
-13. [כלי הדפסה](#printing-utilities)
-14. [דוגמת CommonJS](#commonjs-example)
-15. [מושגי JavaScript שמתורגלים](#javascript-concepts-practiced)
-16. [ולידציה וטיפול בשגיאות](#validation-and-error-handling)
-17. [תרחיש לדוגמה](#example-scenario)
-18. [מגבלות נוכחיות](#current-limitations)
-19. [שיפורים אפשריים בעתיד](#possible-future-improvements)
-20. [הערות סיום](#final-notes)
+6. [הסבר קובץ אחר קובץ](#file-by-file-explanation)
+7. [מחלקת TournamentManager](#tournamentmanager-class)
+8. [מצבי משחק וחוקים](#game-modes-and-rules)
+9. [תוצאות משחקים](#match-results)
+10. [מערכת הסטטיסטיקות](#statistics-system)
+11. [כלי הדפסה](#printing-utilities)
+12. [דוגמת CommonJS](#commonjs-example)
+13. [איך להריץ את הפרויקט](#how-to-run-the-project)
+14. [זרימת האפליקציה](#application-flow)
+15. [מודלי הנתונים המרכזיים](#core-data-models)
+16. [מושגי JavaScript שמתורגלים](#javascript-concepts-practiced)
+17. [ולידציה וטיפול בשגיאות](#validation-and-error-handling)
+18. [תרחיש לדוגמה](#example-scenario)
+19. [מגבלות נוכחיות](#current-limitations)
+20. [קישור לפרוייקט](#project-link)
+21. [הרעיונות המרכזיים שחשוב להבין מהפרויקט](#final-notes)
 
 ---
 
@@ -169,6 +170,8 @@ game-tournament-manager-one-day-training/
 ```
 
 ---
+
+<a id="file-by-file-explanation"></a>
 
 ## הסבר קובץ אחר קובץ
 
@@ -2023,6 +2026,8 @@ module.exports;
 
 ---
 
+
+<a id="project-link"></a>
 
 ## קישור לפרוייקט
 
